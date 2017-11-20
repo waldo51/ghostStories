@@ -3,43 +3,40 @@
         <h2>Scoring</h2>
         <h4>Number of Players</h4>
         <div>
-            <button class="button button-assertive">1</button>
-            <button class="button button-assertive">2</button>
-            <button class="button button-assertive">3</button>
-            <button class="button button-assertive">4</button>
+            <button ng-repeat="button in $ctrl.players" ng-click="$ctrl.data.playerNum = button" class="button button-assertive">{{button}}</button>
         </div>
         <h4>Difficulty</h4>
         <div>
-            <button class="button button-assertive">Initiate</button>
-            <button class="button button-assertive">Normal</button>
-            <button class="button button-assertive">Nightmare</button>
-            <button class="button button-assertive">Hell</button>
+            <button ng-click="$ctrl.data.mode = 'Initiate'" class="button button-assertive">Initiate</button>
+            <button ng-click="$ctrl.data.mode = 'Normal'" class="button button-assertive">Normal</button>
+            <button ng-click="$ctrl.data.mode = 'Nightmare'" class="button button-assertive">Nightmare</button>
+            <button ng-click="$ctrl.data.mode = 'Hell'" class="button button-assertive">Hell</button>
         </div>
         <h4>Victory</h4>
         <div>
-            <button class="button button-assertive">Yes!</button>
-            <button class="button button-assertive">No ☹</button>
+            <button ng-click="$ctrl.data.win = true" class="button button-assertive">Yes!</button>
+            <button ng-click="$ctrl.data.win = false" class="button button-assertive">No ☹</button>
         </div>
         <h4>Qi</h4>
         <label class="item-input-wrapper">
-            <input type="text" placeholder="# Qi">
+            <input ng-model="$ctrl.data.qi" type="number" placeholder="# Qi">
         </label>
         <h4>Remaining Ghost Cards</h4>
         <label class="item-input-wrapper">
-            <input type="text" placeholder="# Cards">
+            <input ng-model="$ctrl.data.cardsLeft" type="number" placeholder="# Cards">
         </label>
         <h4>Dead Taoists</h4>
         <label class="item-input-wrapper">
-            <input type="text" placeholder="# Dead">
+            <input ng-model="$ctrl.data.deadPlayers" type="number" placeholder="# Dead">
         </label>
         <h4>Haunted Tiles</h4>
         <label class="item-input-wrapper">
-            <input type="text" placeholder="# Tiles">
+            <input ng-model="$ctrl.data.hauntedTiles" type="number" placeholder="# Tiles">
         </label>
         <h4>Bosses Killed</h4>
         <label class="item-input-wrapper">
-            <input type="text" placeholder="# Killed">
+            <input ng-model="$ctrl.data.bossesKilled" type="number" placeholder="# Killed">
         </label>
-        <button ui-sref="dataEntry2" class="button button-royal">Next</button>
+        <button ng-if="$ctrl.data1Complete()" ui-sref="dataEntry2" class="button button-royal">Next</button>
     </ion-content>
 </ion-view>

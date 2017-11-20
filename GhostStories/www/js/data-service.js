@@ -3,13 +3,14 @@ angular.module("gs")
 
     function DataService($window){
         return {
-            addGame: addGame,
+            saveGame: saveGame,
             getAll: getAll,
             getCount: getCount
         };
 
-        function addGame(){
+        function saveGame(game){
             count = getCount();
+            $window.localStorage.setItem('game' + (count+1) , JSON.stringify(game));
             $window.localStorage.setItem('gsCount', JSON.stringify(count += 1));
         }
 
