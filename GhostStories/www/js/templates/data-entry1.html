@@ -1,42 +1,46 @@
 <ion-view>
-    <ion-content class="has-header">
-        <h2>Scoring</h2>
-        <h4>Number of Players</h4>
-        <div>
-            <button ng-repeat="button in $ctrl.players" ng-click="$ctrl.data.playerNum = button; $ctrl.initPlayerNames();" class="button button-assertive">{{button}}</button>
-        </div>
-        <h4>Difficulty</h4>
-        <div>
-            <button ng-click="$ctrl.data.mode = 'Initiate'" class="button button-assertive">Initiate</button>
-            <button ng-click="$ctrl.data.mode = 'Normal'" class="button button-assertive">Normal</button>
-            <button ng-click="$ctrl.data.mode = 'Nightmare'" class="button button-assertive">Nightmare</button>
-            <button ng-click="$ctrl.data.mode = 'Hell'" class="button button-assertive">Hell</button>
-        </div>
-        <h4>Victory</h4>
-        <div>
-            <button ng-click="$ctrl.data.win = true" class="button button-assertive">Yes!</button>
-            <button ng-click="$ctrl.data.win = false" class="button button-assertive">No ☹</button>
-        </div>
-        <h4>Qi</h4>
-        <label class="item-input-wrapper">
-            <input ng-model="$ctrl.data.qi" type="number" placeholder="# Qi">
-        </label>
-        <h4>Remaining Ghost Cards</h4>
-        <label class="item-input-wrapper">
-            <input ng-model="$ctrl.data.cardsLeft" type="number" placeholder="# Cards">
-        </label>
-        <h4>Dead Taoists</h4>
-        <label class="item-input-wrapper">
-            <input ng-model="$ctrl.data.deadPlayers" type="number" placeholder="# Dead">
-        </label>
-        <h4>Haunted Tiles</h4>
-        <label class="item-input-wrapper">
-            <input ng-model="$ctrl.data.hauntedTiles" type="number" placeholder="# Tiles">
-        </label>
-        <h4>Bosses Killed</h4>
-        <label class="item-input-wrapper">
-            <input ng-model="$ctrl.data.bossesKilled" type="number" placeholder="# Killed">
-        </label>
-        <button ng-if="$ctrl.dataComplete()" ui-sref="dataEntry2" class="button button-royal">Next</button>
+    <ion-content class="ghosts has-header">
+        <div class="centered">
+            <div class="title">
+                <h2>Scoring</h2>
+            </div>
+            <h4>Number of Players</h4>
+            <div>
+                <button ng-repeat="button in $ctrl.players" ng-click="$ctrl.data.playerNum = button" class="button button-assertive">{{button}}</button>
+            </div>
+            <h4>Difficulty</h4>
+            <div>
+                <button ng-click="$ctrl.data.mode = 'Initiate'" class="button button-assertive">Initiate</button>
+                <button ng-click="$ctrl.data.mode = 'Normal'" class="button button-assertive">Normal</button>
+                <button ng-click="$ctrl.data.mode = 'Nightmare'" class="button button-assertive">Nightmare</button>
+                <button ng-click="$ctrl.data.mode = 'Hell'" class="button button-assertive">Hell</button>
+            </div>
+            <h4>Victory</h4>
+            <div>
+                <button ng-click="$ctrl.data.win = true" class="button button-assertive">Yes!</button>
+                <button ng-click="$ctrl.data.win = false" class="button button-assertive">No ☹</button>
+            </div>
+            <h4>Qi</h4>
+            <label class="ghost-input item-input-wrapper">
+                <input ng-model="$ctrl.data.qi" type="number" placeholder="# Qi">
+            </label>
+            <h4>Remaining Ghost Cards</h4>
+            <label class="ghost-input item-input-wrapper">
+                <input ng-model="$ctrl.data.cardsLeft" type="number" placeholder="# Cards">
+            </label>
+            <h4>Dead Taoists</h4>
+            <label class="ghost-input item-input-wrapper">
+                <input ng-model="$ctrl.data.deadPlayers" type="number" placeholder="# Dead">
+            </label>
+            <h4>Haunted Tiles</h4>
+            <label class="ghost-input item-input-wrapper">
+                <input ng-model="$ctrl.data.hauntedTiles" type="number" placeholder="# Tiles">
+            </label>
+            <h4>Bosses Killed</h4>
+            <label class="ghost-input item-input-wrapper">
+                <input ng-model="$ctrl.data.bossesKilled" type="number" placeholder="# Killed">
+            </label>
+            <button ng-if="$ctrl.dataComplete()" ng-click="$ctrl.initNameArrays()" ui-sref="dataEntry2" class="button button-royal">Next</button>
+        </div> 
     </ion-content>
 </ion-view>

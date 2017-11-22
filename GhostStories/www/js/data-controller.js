@@ -10,7 +10,7 @@ function DataController(DataService){
     $ctrl.data = {};
     $ctrl.bosses = [1,2,3,4];
     $ctrl.getAllGames();
-    $ctrl.initPlayerNames = initPlayerNames;
+    $ctrl.initNameArrays = initNameArrays;
 
     $ctrl.saveGame = function () {
         //calculate and set score
@@ -87,7 +87,17 @@ function DataController(DataService){
         $ctrl.data.date = dateString;
     }
 
-    function initPlayerNames(){
+    function initNameArrays(){
         $ctrl.data.playerNames = new Array($ctrl.data.playerNum - 1);
+        //set number of slots in bosses array according to # players and difficulty
+        if($ctrl.data.mode ==='Hell' || $ctrl.data.mode==='Nightmare'){
+            if($ctrl.data.playerNum < 3){
+                $ctrl.data.bossNames = new Array(3);
+            } else{
+                $ctrl.data.bossNames = new Array(4);
+            }
+        } else{
+            $ctrl.data.bossNames = new Array(1);
+        }
     }
 };

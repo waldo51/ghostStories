@@ -1,10 +1,31 @@
 <ion-view>
-    <ion-content class="has-header">
-        <h2>Your Score</h2>
-        <div>You scored {{$ctrl.saved.score}} points</div>
+    <ion-content class="centered ghosts has-header">
+        <div class="title">
+            <h2>Scorecard</h2>
+        </div>
+        
+
+        <h4>Score</h4>
+        <div>Score: {{$ctrl.saved.score}}</div>
+        <div>Difficulty: {{$ctrl.saved.mode}}</div>
+
+        <h4>Players</h4>
         <div ng-repeat="player in $ctrl.saved.playerNames">
             <span>Player: {{player}}</span> 
         </div>
+
+        <h4>Bosses</h4>
+        <div ng-repeat="player in $ctrl.saved.playerNames">
+            <span>Player: {{player}}</span> 
+        </div>
+
+        <h4>Details</h4>
+        <div>Victory: {{$ctrl.saved.win?'yes':'no'}}</div>
+        <div>Qi Remaining: {{$ctrl.saved.qi}}</div>
+        <div>Cards Remaining: {{$ctrl.saved.cardsLeft}}</div>
+        <div>Dead Players: {{$ctrl.saved.deadPlayers}}</div>
+        <div>Haunted Tiles: {{$ctrl.saved.hauntedTiles}}</div>
+        <div>Bosses Killed: {{$ctrl.saved.bossesKilled}}</div>
         <button ui-sref="welcome" class="button button-royal">Home</button>
     </ion-content>
 </ion-view>

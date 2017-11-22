@@ -1,8 +1,10 @@
 <ion-view>
-    <ion-content class="has-header">
-        <h2>ScoreBoard</h2>
+    <ion-content class="ghosts has-header">
+        <div class="title">
+            <h2>ScoreBoard</h2>
+        </div>
         <div ng-repeat="game in $ctrl.games" class="card">
-            <div ng-click="$ctrl.saved = game;" ui-sref="saved" class="item item-text-wrap">
+            <div ng-click="$ctrl.saved = game;" ui-sref="details" class="ghost-card item item-text-wrap">
                 <span>Score: {{game.score}}</span><br>
                 <span>Date: {{game.date}}</span>
             </div>

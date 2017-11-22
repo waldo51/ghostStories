@@ -18,17 +18,17 @@
           templateUrl: 'js/templates/welcome.html'
         })
         .state('dataEntry1', {
-          url: '/dataentry',
+          url: '/entergame',
           controller: 'DataController',
           templateUrl: 'js/templates/data-entry1.html'
         })
         .state('dataEntry2', {
-          url: '/dataentry',
+          url: '/entergame',
           controller: 'DataController',
           templateUrl: 'js/templates/data-entry2.html'
         })
         .state('saved', {
-          url: '/saved',
+          url: '/entergame',
           controller: 'DataController',
           templateUrl: 'js/templates/saved.html'
         })
@@ -36,6 +36,11 @@
           url: '/scoreboard',
           controller: 'DataController',
           templateUrl: 'js/templates/scoreboard.html'
+        })
+        .state('details', {
+          url: '/scoreboard',
+          controller: 'DataController',
+          templateUrl: 'js/templates/saved.html'
         })
         ;
     }

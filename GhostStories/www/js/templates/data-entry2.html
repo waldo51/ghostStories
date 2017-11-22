@@ -1,11 +1,17 @@
 <ion-view>
-    <ion-content class="has-header">
-        <h2>For The Record (optional)</h2>
-        <h4>Incarnations</h4>
-        <label ng-repeat="boss in $ctrl.bosses" class="item-input-wrapper">
-            <input ng-model="$ctrl.data.bossNames[boss]" type="text" placeholder="Wu Feng {{boss}}">
+    <ion-content class="ghosts has-header">
+        <h2>For the Record</h2>
+        <h4 ng-pluralize 
+            count="$ctrl.data.bossNames.length"
+            when="{'one': 'Incarnation of Wu Feng','other': 'Incarnations of Wu Feng'}" >
+        </h4>
+        <label ng-repeat="boss in $ctrl.bosses | limitTo:$ctrl.data.bossNames.length" class="item-input-wrapper">
+            <input ng-model="$ctrl.data.bossNames[boss - 1]" type="text" placeholder="Wu Feng {{boss}}">
         </label>
-        <h4>Players</h4>
+        <h4 ng-pluralize 
+            count="$ctrl.data.playerNames.length"
+            when="{'one': 'Player Name','other': 'Player Names'}" >
+        </h4>
         <label ng-repeat="player in $ctrl.players | limitTo:$ctrl.data.playerNum" class="item-input-wrapper">
             <input ng-model="$ctrl.data.playerNames[player - 1]" type="text" placeholder="Player {{player}}">
         </label>

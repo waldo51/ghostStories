@@ -1,14 +1,14 @@
 <ion-view>
-    <ion-content class="has-header">
-        <h3>Score Card</h3>
-        <button ui-sref="scoreboard" class="button button-royal">
-            View Scores
-        </button>
-        <button ui-sref="dataEntry1" class="button button-royal">
-            Enter Score
-        </button>
-        <div>
-        Games Played : {{$ctrl.count}}
+    <ion-content class="ghosts has-header">
+        <div class="title"><h2>Score Card</h2></div>
+        <div class="centered">
+            <button ui-sref="scoreboard" class="button button-royal">
+                View Scores
+            </button>
+            <button ui-sref="dataEntry1" class="button button-royal">
+                Enter Score
+            </button><br>
+            <span>Games Played : {{$ctrl.count}}</span>
         </div>
     </ion-content>
 </ion-view>
