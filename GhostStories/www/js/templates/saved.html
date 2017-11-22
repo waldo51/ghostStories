@@ -2,6 +2,9 @@
     <ion-content class="has-header">
         <h2>Your Score</h2>
         <div>You scored {{$ctrl.saved.score}} points</div>
+        <div ng-repeat="player in $ctrl.saved.playerNames">
+            <span>Player: {{player}}</span> 
+        </div>
         <button ui-sref="welcome" class="button button-royal">Home</button>
     </ion-content>
 </ion-view>

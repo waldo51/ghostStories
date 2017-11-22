@@ -5,22 +5,29 @@ function DataController(DataService){
     var $ctrl = this;
 
     $ctrl.count = DataService.getCount();
+    $ctrl.getAllGames = getAllGames;
     $ctrl.players = [1,2,3,4];
     $ctrl.data = {};
     $ctrl.bosses = [1,2,3,4];
+    $ctrl.getAllGames();
+    $ctrl.initPlayerNames = initPlayerNames;
 
     $ctrl.saveGame = function () {
+        //calculate and set score
+        setScore();
+        //add date
+        setDate();
         //save game
         DataService.saveGame($ctrl.data);
-
-        //move data to new variable (for score page) calc score and then reset data and count
+        //update history in memory
+        $ctrl.getAllGames();
+        //move data to new variable (for score page) and then reset data and count
         $ctrl.saved = $ctrl.data;
-        setScore();
         $ctrl.data = {};
         $ctrl.count = DataService.getCount();
     };
     
-    $ctrl.data1Complete = function (){
+    $ctrl.dataComplete = function (){
        return $ctrl.data.playerNum !== undefined &&
         $ctrl.data.mode !== undefined &&
         $ctrl.data.win !== undefined && 
@@ -32,29 +39,30 @@ function DataController(DataService){
     };
 
 
+    //calculates then sets the score for current game being added
     function setScore(){
         var score = 0;
 
         //win points and cards remaining
-        if($ctrl.saved.win){
+        if($ctrl.data.win){
             score += 10;
-            if($ctrl.saved.mode === "Hell") score += 10;
+            if($ctrl.data.mode === "Hell") score += 10;
             //cards left are good if you win
-            score += $ctrl.saved.cardsLeft
+            score += $ctrl.data.cardsLeft
         }else {
             //cards are bad if you lose
-            score -= $ctrl.saved.cardsLeft
+            score -= $ctrl.data.cardsLeft
         }
 
         //qi
-        score += $ctrl.saved.qi;
+        score += $ctrl.data.qi;
         //taoists dead
-        score -= $ctrl.saved.deadPlayers * 3;
+        score -= $ctrl.data.deadPlayers * 3;
         //haunted tiles
-        score -= $ctrl.saved.hauntedTiles * 4;
+        score -= $ctrl.data.hauntedTiles * 4;
 
-        if($ctrl.saved.mode === "Hell" || $ctrl.saved.mode === "Nightmare"){
-            switch($ctrl.saved.bossesKilled){
+        if($ctrl.data.mode === "Hell" || $ctrl.data.mode === "Nightmare"){
+            switch($ctrl.data.bossesKilled){
                 case 4:
                 case 3: score += 6;
                 case 2: score += 4;
@@ -63,6 +71,23 @@ function DataController(DataService){
             }
         }
 
-        $ctrl.saved.score = score;
+        $ctrl.data.score = score;
+    }
+
+    function getAllGames(){
+        $ctrl.games = DataService.getAllGames();
+    }
+
+    function setDate(){
+        var newDate = new Date(); 
+        var dateString = "";  
+        dateString += (newDate.getMonth() + 1) + "/";  
+        dateString += newDate.getDate() + "/";  
+        dateString += newDate.getFullYear(); 
+        $ctrl.data.date = dateString;
+    }
+
+    function initPlayerNames(){
+        $ctrl.data.playerNames = new Array($ctrl.data.playerNum - 1);
     }
 };

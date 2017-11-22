@@ -1,7 +1,12 @@
 <ion-view>
     <ion-content class="has-header">
         <h2>ScoreBoard</h2>
-        <div>lots of scores here</div>
+        <div ng-repeat="game in $ctrl.games" class="card">
+            <div ng-click="$ctrl.saved = game;" ui-sref="saved" class="item item-text-wrap">
+                <span>Score: {{game.score}}</span><br>
+                <span>Date: {{game.date}}</span>
+            </div>
+        </div>
         <button ui-sref="welcome" class="button button-royal">Home</button>
     </ion-content>     
 </ion-view>

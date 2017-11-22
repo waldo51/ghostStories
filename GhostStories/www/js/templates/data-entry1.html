@@ -3,7 +3,7 @@
         <h2>Scoring</h2>
         <h4>Number of Players</h4>
         <div>
-            <button ng-repeat="button in $ctrl.players" ng-click="$ctrl.data.playerNum = button" class="button button-assertive">{{button}}</button>
+            <button ng-repeat="button in $ctrl.players" ng-click="$ctrl.data.playerNum = button; $ctrl.initPlayerNames();" class="button button-assertive">{{button}}</button>
         </div>
         <h4>Difficulty</h4>
         <div>
@@ -37,6 +37,6 @@
         <label class="item-input-wrapper">
             <input ng-model="$ctrl.data.bossesKilled" type="number" placeholder="# Killed">
         </label>
-        <button ng-if="$ctrl.data1Complete()" ui-sref="dataEntry2" class="button button-royal">Next</button>
+        <button ng-if="$ctrl.dataComplete()" ui-sref="dataEntry2" class="button button-royal">Next</button>
     </ion-content>
 </ion-view>

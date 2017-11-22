@@ -4,7 +4,7 @@ angular.module("gs")
     function DataService($window){
         return {
             saveGame: saveGame,
-            getAll: getAll,
+            getAllGames: getAllGames,
             getCount: getCount
         };
 
@@ -14,8 +14,13 @@ angular.module("gs")
             $window.localStorage.setItem('gsCount', JSON.stringify(count += 1));
         }
 
-        function getAll(){
-            return "test";
+        function getAllGames(){
+            count = getCount();
+            var games = new Array(count);
+            for (i = 0; i < count; i++){
+                games[i] = JSON.parse($window.localStorage.getItem('game' + (i + 1)));
+            }
+            return games;
         }
 
         function getCount(){
