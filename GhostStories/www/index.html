@@ -6,16 +6,6 @@
     <title></title>
 
     <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -26,6 +16,15 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
@@ -35,7 +34,19 @@
     <script src="js/data-service.js"></script>
     <script src="js/data-controller.js"></script>
     <script src="js/routes.js"></script>
+    <script>
+      // Initialize the Firebase SDK
+      var config = {
+        apiKey: '<your-api-key>',
+        authDomain: '<your-auth-domain>',
+        databaseURL: '<your-database-url>',
+        storageBucket: '<your-storage-bucket>'
+      };
+      firebase.initializeApp(config);
+    </script>
   </head>
+
+
 
   <body ng-app="gs", ng-controller="DataController as $ctrl">
     <ion-nav-view>

@@ -2,15 +2,13 @@
     angular
       .module('gs')
       .config(config);
-  
+
     config.$inject = ['$stateProvider', '$urlRouterProvider'];
-  
+
     function config($stateProvider,$urlRouterProvider) {
 
       $urlRouterProvider.otherwise('welcome');
 
-
-      //TODO: Do I Need any of these controllers as all are the same and included in index.html?
       $stateProvider
         .state('welcome', {
           url: '/welcome',
