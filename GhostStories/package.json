@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "devDependencies": {
-    "@ionic/v1-toolkit": "1.0.17",
+    "@ionic/v1-toolkit": "^1.0.19",
     "gulp": "^3.5.6",
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
@@ -16,7 +16,7 @@
   "cordovaPlatforms": [],
   "dependencies": {
     "@angular/cli": "^6.0.5",
-    "angularfire2": "^5.0.0-rc.10",
-    "firebase": "^5.0.4"
+    "angularfire2": "^5.1.1",
+    "firebase": "^5.8.4"
   }
 }
